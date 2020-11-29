@@ -16,7 +16,7 @@ public class CategoriesDAO {
         ds.setDatabaseName(infoList.get(0));
         ds.setUser(infoList.get(1));
         ds.setPassword(infoList.get(2));
-        ds.setPortNumber(Integer.parseInt(infoList.get(3)));
-        ds.setServerName(infoList.get(4));
+        ds.setServerName(infoList.get(3));
+        //ds.setPortNumber(Integer.parseInt(infoList.get(4)));
     }
 }
