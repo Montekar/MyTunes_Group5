@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SongDAO {
 
-    SQLServerDataSource ds;
+    private SQLServerDataSource ds;
 
     public SongDAO() throws IOException {
         this.ds = new SQLServerDataSource();
@@ -24,7 +24,7 @@ public class SongDAO {
         ds.setUser(infoList.get(1));
         ds.setPassword(infoList.get(2));
         ds.setServerName(infoList.get(3));
-        //ds.setPortNumber(Integer.parseInt(infoList.get(4)));
+        ds.setPortNumber(1433);
     }
 
     public List<Song> getAllSongs() {
@@ -34,7 +34,7 @@ public class SongDAO {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sqlStatement);
             while (rs.next()) { // Creates and adds song objects into an array list
-                Song son = new Song(rs.getString("name"), rs.getString("artist"), rs.getString("category"), rs.getInt("time"));
+                Song son = new Song(rs.getString("title"), rs.getString("artist"), rs.getString("category"), rs.getInt("time"));
                 allSongs.add(son);
             }
             return allSongs; //Returns the full list
