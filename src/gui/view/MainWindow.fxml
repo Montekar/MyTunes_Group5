@@ -90,14 +90,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView prefHeight="423.0" prefWidth="354.0">
-                    <columns>
-                      <TableColumn prefWidth="120.0" text="Title" />
-                      <TableColumn prefWidth="112.800048828125" text="Artist" />
-                        <TableColumn prefWidth="81.5999755859375" text="Category" />
-                        <TableColumn prefWidth="65.60009765625" text="Time" />
-                    </columns>
-                  </TableView>
+                  <TableView prefHeight="423.0" prefWidth="354.0" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button mnemonicParsing="false" text="New..." />

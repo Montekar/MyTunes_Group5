@@ -5,27 +5,28 @@ import be.Song;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
+import dal.DataBaseConnectionDAO.DbConnectionProvider;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class PlaylistDAO {
 
-    SQLServerDataSource ds;
+    private DbConnectionProvider connector;
+
 
     public PlaylistDAO() throws IOException {
-        this.ds = new SQLServerDataSource();
-        DataBaseConnectionDAO connectionInfo = new DataBaseConnectionDAO();
-        List<String> infoList = connectionInfo.getDatabaseInfo();
-        ds.setDatabaseName(infoList.get(0));
-        ds.setUser(infoList.get(1));
-        ds.setPassword(infoList.get(2));
-        ds.setServerName(infoList.get(3));
-        //ds.setPortNumber(Integer.parseInt(infoList.get(4)));
+        connector = new DbConnectionProvider();
+    }
 
+    public void createPlaylist() throws SQLServerException {
+        try(Connection con = connector.getConnection())
+        {
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

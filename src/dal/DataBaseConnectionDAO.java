@@ -1,11 +1,13 @@
 package dal;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+
+import java.io.*;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class DataBaseConnectionDAO {
 
@@ -14,23 +16,42 @@ public class DataBaseConnectionDAO {
     so database connection could be easily possible
     */
 
-    public List<String> getDatabaseInfo() throws IOException {
-        List<String> info = new ArrayList();
-        String source = "data/login.txt";
-        File file = new File(source);
+    public static class DbConnectionProvider {
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (!line.isEmpty()) {
-                    try {
-                        info.add(line);
-                    } catch (Exception ex) {
-                        System.out.println(ex);
-                    }
-                }
+        private static final String PROP_FILE = "data/connectionInfo.settings";
+        private SQLServerDataSource ds;
+
+        /**
+         * Creates a connection with the database.
+         */
+        public DbConnectionProvider()
+        {
+            try
+            {
+                Properties databaseProperties = new Properties();
+                databaseProperties.load(new FileInputStream(PROP_FILE));
+                ds = new SQLServerDataSource();
+                ds.setServerName(databaseProperties.getProperty("Server"));
+                ds.setDatabaseName(databaseProperties.getProperty("Database"));
+                ds.setUser(databaseProperties.getProperty("User"));
+                ds.setPassword(databaseProperties.getProperty("Password"));
+            }
+            catch(IOException e)
+            {
+                //To DO
             }
         }
-        return info;
+
+        /**
+         * Returns Connection object which is able to
+         * provide informations about database.
+         *
+         * @return The connection with database.
+         * @throws SQLServerException if connection with database cannot be established.
+         */
+        public Connection getConnection() throws SQLServerException
+        {
+            return ds.getConnection();
+        }
     }
 }
