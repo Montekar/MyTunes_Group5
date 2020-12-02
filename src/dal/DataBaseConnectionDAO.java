@@ -3,10 +3,9 @@ package dal;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class DataBaseConnectionDAO {
@@ -21,9 +20,6 @@ public class DataBaseConnectionDAO {
         private static final String PROP_FILE = "data/connectionInfo.settings";
         private SQLServerDataSource ds;
 
-        /**
-         * Creates a connection with the database.
-         */
         public DbConnectionProvider()
         {
             try

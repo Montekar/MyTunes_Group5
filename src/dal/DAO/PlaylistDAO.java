@@ -1,14 +1,10 @@
-package dal;
+package dal.DAO;
 
-import be.Playlist;
-import be.Song;
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-
 import dal.DataBaseConnectionDAO.DbConnectionProvider;
+
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
