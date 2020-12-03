@@ -11,7 +11,7 @@ public class DALFacade implements IDALFacade{
     private SongDAO songDAO;
 
     // This is just a comment for testing purposes
-    // Wow
+    
     public DALFacade() {
         songDAO = new SongDAO();
     }
