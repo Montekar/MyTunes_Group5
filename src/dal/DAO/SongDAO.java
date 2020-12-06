@@ -17,7 +17,8 @@ public class SongDAO {
         connector = new DbConnectionProvider();
     }
 
-    public List<Song> getAllSongs() {
+    public List<Song> getAllSongs()
+    {
         List<Song> allSongs = new ArrayList<>();
         try(Connection con = connector.getConnection())
         {
@@ -25,11 +26,12 @@ public class SongDAO {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sqlStatement);
             while (rs.next()) { // Creates and adds song objects into an array list
-                Song son = new Song(rs.getString("Title"),
-                        rs.getString("Artist"),
-                        rs.getString("Category"),
-                        rs.getInt("Time"),
-                        rs.getString("Link"));
+                String Title = rs.getString("Title");
+                String Artist = rs.getString("Artist");
+                String Category = rs.getString("Category");
+                int Time = rs.getInt("Time");
+                String Link = rs.getString("Link");
+                Song son = new Song(Title, Artist, Category, Time, Link);
                 allSongs.add(son);
             }
             return allSongs; //Returns the full list
@@ -38,4 +40,5 @@ public class SongDAO {
             return null;
         }
     }
+
 }
