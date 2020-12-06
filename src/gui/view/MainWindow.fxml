@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="gui.controller.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MainController">
    <children>
-      <Label layoutX="378.0" layoutY="50.0" text="(none) .... Is Playing">
+      <Label fx:id="paylingSongLabel" layoutX="378.0" layoutY="50.0" text="(none) .... Is Playing">
          <font>
             <Font size="21.0" />
          </font>
@@ -85,15 +86,21 @@
          <children>
             <VBox prefHeight="466.0" prefWidth="382.0">
                <children>
-                  <Label text="Songs">
+                  <Label fx:id="songLabel" text="Songs">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView prefHeight="423.0" prefWidth="354.0" />
+                  <TableView fx:id="lstSongs" prefHeight="423.0" prefWidth="354.0">
+                     <columns>
+                        <TableColumn fx:id="Title" prefWidth="113.59991455078125" text="Title" />
+                        <TableColumn fx:id="Artist" minWidth="0.0" prefWidth="100.7999267578125" text="Artist" />
+                        <TableColumn fx:id="Category" prefWidth="94.4000244140625" text="Category" />
+                        <TableColumn fx:id="Time" prefWidth="68.800048828125" text="Time" />
+                     </columns></TableView>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="New..." />
+                        <Button mnemonicParsing="false" onAction="#newSong" text="New..." />
                         <Button mnemonicParsing="false" text="Edit..." />
                         <Button mnemonicParsing="false" text="Delete" />
                         <Button mnemonicParsing="false" text="Close" />
@@ -103,5 +110,13 @@
             </VBox>
          </children>
       </HBox>
+      <HBox layoutX="91.0" layoutY="50.0" prefHeight="31.0" prefWidth="119.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#backButton" text="&lt;" />
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#playSong" text="Play" />
+            <Button mnemonicParsing="false" onAction="#forwardButton" text="&gt;" />
+         </children>
+      </HBox>
+      <Slider fx:id="volume" blockIncrement="1.0" layoutX="59.0" layoutY="81.0" majorTickUnit="0.25" max="1.0" onMouseReleased="#setSound" showTickMarks="true" value="0.5" />
    </children>
 </AnchorPane>
