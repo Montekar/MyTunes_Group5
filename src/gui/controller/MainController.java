@@ -49,6 +49,8 @@ public class MainController implements Initializable {
     private Label paylingSongLabel;
     @FXML
     private Slider volume;
+    @FXML
+    private Button exit;
 
     private MediaPlayer mediaPlayer;
 
@@ -124,6 +126,7 @@ public class MainController implements Initializable {
 
     public void backButton(javafx.event.ActionEvent actionEvent) {
         if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
+            mediaPlayer.stop();
             if (currentSong - 1 <= - 1) {
                 currentSong = 0;
             }
@@ -137,13 +140,14 @@ public class MainController implements Initializable {
 
     public void forwardButton(javafx.event.ActionEvent actionEvent) {
         if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
+            mediaPlayer.stop();
             if (lstSongs.getItems().size() == currentSong + 1) {
                 currentSong = 0;
             }
             else {
                 currentSong++;
             }
-        play();
+            play();
         }
     }
 
@@ -164,7 +168,22 @@ public class MainController implements Initializable {
         stage.setScene(new Scene(root1, 600, 400));
         stage.centerOnScreen();
         stage.show();
+    }
 
+    public void newPlaylist(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent root2;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/view/popupPlaylist.fxml"));
+        root2 = (Parent) fxmlLoader.load();
+        fxmlLoader.<PopupPlaylistController>getController().setInfo();
+        fxmlLoader.<PopupPlaylistController>getController().setController(this);
 
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root2));
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void setExit(javafx.event.ActionEvent actionEvent) throws IOException{
+        System.exit(0);
     }
 }
