@@ -45,10 +45,10 @@
                         <TableColumn prefWidth="75.0" text="Time" />
                     </columns>
                   </TableView>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="227.0">
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="227.0" spacing="20.0">
                      <children>
-                        <Button mnemonicParsing="false" text="New..." />
-                        <Button mnemonicParsing="false" text="Edit..." />
+                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="New..." />
+                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="Edit..." />
                         <Button mnemonicParsing="false" text="Delete" />
                      </children>
                   </HBox>
@@ -70,7 +70,7 @@
                       <TableColumn prefWidth="230.3999816894531" text="Songs" />
                     </columns>
                   </TableView>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Button mnemonicParsing="false" text="⬆" />
                         <Button mnemonicParsing="false" text="⬇" />
@@ -98,12 +98,12 @@
                         <TableColumn fx:id="Category" prefWidth="94.4000244140625" text="Category" />
                         <TableColumn fx:id="Time" prefWidth="68.800048828125" text="Time" />
                      </columns></TableView>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#newSong" text="New..." />
-                        <Button mnemonicParsing="false" text="Edit..." />
+                        <Button mnemonicParsing="false" onAction="#newSong" text="Edit..." />
                         <Button mnemonicParsing="false" text="Delete" />
-                        <Button mnemonicParsing="false" text="Close" />
+                        <Button fx:id="exit" mnemonicParsing="false" onAction="#setExit" text="Close" />
                      </children>
                   </HBox>
                </children>
