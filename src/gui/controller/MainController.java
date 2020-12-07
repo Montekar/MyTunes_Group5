@@ -124,6 +124,7 @@ public class MainController implements Initializable {
 
     public void backButton(javafx.event.ActionEvent actionEvent) {
         if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
+            mediaPlayer.stop();
             if (currentSong - 1 <= - 1) {
                 currentSong = 0;
             }
@@ -137,6 +138,7 @@ public class MainController implements Initializable {
 
     public void forwardButton(javafx.event.ActionEvent actionEvent) {
         if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
+            mediaPlayer.stop();
             if (lstSongs.getItems().size() == currentSong + 1) {
                 currentSong = 0;
             }
