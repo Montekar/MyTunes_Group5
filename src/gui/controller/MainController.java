@@ -161,7 +161,7 @@ public class MainController implements Initializable {
         fxmlLoader.<PopupSongController>getController().setController(this);
 
         Stage stage = new Stage();
-        stage.setScene(new Scene(root1, 800, 800));
+        stage.setScene(new Scene(root1, 600, 400));
         stage.centerOnScreen();
         stage.show();
 
