@@ -2,7 +2,7 @@ package dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-//test
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
