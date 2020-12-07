@@ -3,26 +3,31 @@ package gui.model;
 import be.Song;
 import bll.BLLFacade;
 import bll.IBLLFacade;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.List;
+import java.io.IOException;
 
 public class SongModel {
     private static SongModel SongsSingleteon;
     private IBLLFacade bllFacade;
 
-    public SongModel() {
+    private ObservableList<Song> allSongs = FXCollections.observableArrayList();
+
+    public SongModel() throws IOException {
             bllFacade = new BLLFacade();
     }
 
-    public static SongModel getInstance(){
+    public static SongModel getInstance() throws IOException {
         if (SongsSingleteon == null)
         {
             SongsSingleteon = new SongModel();
         }
         return SongsSingleteon;
     }
-
-    public List<Song> getAllSongs() {
-        return bllFacade.getAllSongs();
+    public ObservableList<Song> getAllSongs() {
+        allSongs = FXCollections.observableArrayList();
+        allSongs.addAll( bllFacade.getAllSongs());
+        return allSongs;
     }
 }
