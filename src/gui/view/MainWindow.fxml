@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -38,10 +39,13 @@
                         <TableColumn prefWidth="75.0" text="Time" />
                     </columns>
                   </TableView>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="227.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="227.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="New..." />
-                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="Edit..." />
+                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="New Playlist" />
+                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="Edit Playlist">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></Button>
                         <Button mnemonicParsing="false" text="Delete" />
                      </children>
                   </HBox>
@@ -93,8 +97,8 @@
                      </columns></TableView>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#newSong" text="New..." />
-                        <Button mnemonicParsing="false" onAction="#newSong" text="Edit..." />
+                        <Button mnemonicParsing="false" onAction="#newSong" text="New Song" />
+                        <Button mnemonicParsing="false" onAction="#newSong" text="Edit Song" />
                         <Button mnemonicParsing="false" text="Delete" />
                         <Button fx:id="exit" mnemonicParsing="false" onAction="#setExit" text="Close" />
                      </children>
