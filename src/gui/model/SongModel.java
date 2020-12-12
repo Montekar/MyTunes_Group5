@@ -30,4 +30,17 @@ public class SongModel {
         allSongs.addAll( bllFacade.getAllSongs());
         return allSongs;
     }
+
+    public Song createSong(String name, String text, String selectedItem, int i, String text1) {
+        return bllFacade.createSong(name, text, selectedItem, i, text1);
+    }
+
+    public Song updateSong(Song songToEdit, String name, String text, String selectedItem, int i, String text1) {
+        return bllFacade.updateSong(songToEdit, name, text, selectedItem, i, text1);
+    }
+
+    public Song deleteSong(Song songToDelete)
+    {
+        return bllFacade.deleteSong(songToDelete);
+    }
 }

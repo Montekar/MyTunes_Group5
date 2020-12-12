@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="933.0" stylesheets="@../CSS/Main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MainController">
    <children>
@@ -98,9 +105,9 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#newSong" text="New Song" />
-                        <Button mnemonicParsing="false" onAction="#newSong" text="Edit Song" />
-                        <Button mnemonicParsing="false" text="Delete" />
-                        <Button fx:id="exit" mnemonicParsing="false" onAction="#setExit" text="Close" />
+                        <Button mnemonicParsing="false" onAction="#updateSong" text="Edit Song" />
+                        <Button mnemonicParsing="false" onAction="#deleteSong" text="Delete" />
+                        <Button mnemonicParsing="false" onAction="#setExit" text="Close" />
                      </children>
                   </HBox>
                </children>

@@ -1,10 +1,47 @@
 package gui.controller;
 
+import be.Playlist;
+import be.Song;
+import gui.model.PlaylistModel;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 public class PopupPlaylistController {
 
-    public void setInfo() {
+    @FXML
+    private TextField playlistName;
+
+    private PlaylistModel playlistModel;
+    private boolean isEditing = false;
+    private Playlist playlistToEdit;
+
+    public void setInfo(Playlist selectedItem) {
+        isEditing = true;
+        playlistToEdit = selectedItem;
+        //playlistName.setText(selectedItem.getName());
     }
 
     public void setController(MainController mainController) {
+    }
+
+    public void closePlaylist(ActionEvent actionEvent) {
+        Stage stage = (Stage) playlistName.getScene().getWindow();
+        stage.close();
+    }
+
+    public void newPlaylist(ActionEvent actionEvent) {
+        String name = playlistName.getText().trim(); //Eliminates all white spaces (from and back of the string)
+        if (name != null && name.length() > 0 && name.length() < 50) {
+            if (!isEditing) {
+                playlistModel.createPlaylist(name);
+            } else {
+                playlistModel.editPlaylist(playlistToEdit, name);
+            }
+        }
+    }
+
+    public void setInfo(Song selectedItem) {
     }
 }

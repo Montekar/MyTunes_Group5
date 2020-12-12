@@ -49,8 +49,6 @@ public class MainController implements Initializable {
     private Label paylingSongLabel;
     @FXML
     private Slider volume;
-    @FXML
-    private Button exit;
 
     private MediaPlayer mediaPlayer;
 
@@ -158,32 +156,58 @@ public class MainController implements Initializable {
     }
 
     public void newSong(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root1;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/view/popupSong.fxml"));
-        root1 = (Parent) fxmlLoader.load();
-        fxmlLoader.<PopupSongController>getController().setInfo();
-        fxmlLoader.<PopupSongController>getController().setController(this);
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1, 600, 400));
-        stage.centerOnScreen();
-        stage.show();
+        setUpScenes(false);
     }
 
     public void newPlaylist(javafx.event.ActionEvent actionEvent) throws IOException {
+        setUpPlaylists(false);
+    }
+
+    public void setExit(javafx.event.ActionEvent actionEvent) throws IOException{
+        System.exit(0);
+    }
+
+    public void deleteSong(javafx.event.ActionEvent actionEvent) {
+        if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
+            songModel.deleteSong(lstSongs.getSelectionModel().getSelectedItem());
+        }
+    }
+
+
+    public void updateSong(javafx.event.ActionEvent actionEvent) {
+        try {
+            setUpScenes(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setUpScenes(boolean isEditing) throws IOException { // New/Edit song scene
         Parent root2;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/view/popupPlaylist.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/view/popupSong.fxml"));
         root2 = (Parent) fxmlLoader.load();
-        fxmlLoader.<PopupPlaylistController>getController().setInfo();
-        fxmlLoader.<PopupPlaylistController>getController().setController(this);
+        if (isEditing) {
+            fxmlLoader.<PopupSongController>getController().setInfo(lstSongs.getSelectionModel().getSelectedItem());
+        }
+        fxmlLoader.<PopupSongController>getController().setController(this);
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root2));
         stage.centerOnScreen();
         stage.show();
     }
+    private void setUpPlaylists(boolean isEditing) throws IOException { // New/Edit playlist scene
+        Parent root2;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/view/popupPlaylist.fxml"));
+        root2 = (Parent) fxmlLoader.load();
+        if (isEditing) {
+            fxmlLoader.<PopupPlaylistController>getController().setInfo(lstSongs.getSelectionModel().getSelectedItem());
+        }
+        fxmlLoader.<PopupPlaylistController>getController().setController(this);
 
-    public void setExit(javafx.event.ActionEvent actionEvent) throws IOException{
-        System.exit(0);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root2));
+        stage.centerOnScreen();
+        stage.show();
     }
 }
