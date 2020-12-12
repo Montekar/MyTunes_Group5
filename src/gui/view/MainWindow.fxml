@@ -39,7 +39,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="playlistView" prefHeight="386.0" prefWidth="227.0">
+                  <TableView fx:id="playlistView" onMouseClicked="#displaySongs" prefHeight="386.0" prefWidth="227.0">
                     <columns>
                       <TableColumn fx:id="playlistName" prefWidth="102.39999771118164" text="Name" />
                       <TableColumn fx:id="playlistNumber" prefWidth="48.000030517578125" text="Songs" />
@@ -69,23 +69,23 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView prefHeight="424.0" prefWidth="231.0">
+                  <TableView fx:id="songsInPlaylist" prefHeight="424.0" prefWidth="231.0">
                     <columns>
-                      <TableColumn prefWidth="230.3999816894531" text="Songs" />
+                      <TableColumn fx:id="songName" prefWidth="230.3999816894531" text="Songs" />
                     </columns>
                   </TableView>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Button mnemonicParsing="false" text="⬆" />
                         <Button mnemonicParsing="false" text="⬇" />
-                        <Button mnemonicParsing="false" text="Delete" />
+                        <Button mnemonicParsing="false" onAction="#deleteSongFromPlaylist" text="Delete" />
                      </children>
                   </HBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="507.0" layoutY="169.0" mnemonicParsing="false" text="⬅" />
+      <Button layoutX="507.0" layoutY="169.0" mnemonicParsing="false" onAction="#addSongOnPlaylist" text="⬅" />
       <HBox layoutX="540.0" layoutY="145.0" prefHeight="466.0" prefWidth="383.0">
          <children>
             <VBox prefHeight="466.0" prefWidth="382.0">

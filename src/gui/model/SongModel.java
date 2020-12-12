@@ -32,7 +32,9 @@ public class SongModel {
     }
 
     public Song createSong(String name, String text, String selectedItem, int i, String text1) {
-        return bllFacade.createSong(name, text, selectedItem, i, text1);
+        Song newSong = bllFacade.createSong(name, text, selectedItem, i, text1);
+        allSongs.add(newSong);
+        return newSong;
     }
 
     public Song updateSong(Song songToEdit, String name, String text, String selectedItem, int i, String text1) {

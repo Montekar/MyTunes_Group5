@@ -3,6 +3,7 @@ package dal;
 import be.Playlist;
 import be.Song;
 import dal.DAO.PlaylistDAO;
+import dal.DAO.PlaylistSongDAO;
 import dal.DAO.SongDAO;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ public class DALFacade implements IDALFacade{
 
     private SongDAO songDAO;
     private PlaylistDAO playlistDAO;
+    private PlaylistSongDAO playlistSongDAO;
 
     // This is just a comment for testing purposes
 
@@ -21,6 +23,7 @@ public class DALFacade implements IDALFacade{
 
         songDAO = new SongDAO();
         playlistDAO = new PlaylistDAO();
+        playlistSongDAO = new PlaylistSongDAO();
 
     }
 
@@ -63,6 +66,20 @@ public class DALFacade implements IDALFacade{
     @Override
     public Playlist deletePlaylist(Playlist playlistToDelete) {
         return playlistDAO.deletePlaylist(playlistToDelete);
+    }
+
+
+
+    @Override
+    public void deleteSongFromPlaylist(Playlist selectedItem, Song selectedItem1) {
+        playlistSongDAO.deleteSongFromPlaylist(selectedItem, selectedItem1);
+
+    }
+
+    @Override
+    public void addSongToPlaylist(Playlist selectedItem, Song selectedItem1) {
+        playlistSongDAO.addSongToPlaylist(selectedItem, selectedItem1);
+
     }
 
 }

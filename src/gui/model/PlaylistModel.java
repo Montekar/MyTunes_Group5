@@ -1,6 +1,7 @@
 package gui.model;
 
 import be.Playlist;
+import be.Song;
 import bll.BLLFacade;
 import bll.IBLLFacade;
 import javafx.collections.FXCollections;
@@ -44,5 +45,15 @@ public class PlaylistModel {
     public Playlist deletePlaylist(Playlist playlistToDelete)
     {
         return bllFacade.deletePlaylist(playlistToDelete);
+    }
+
+
+
+    public void deleteSongFromPlaylist(Playlist selectedItem, Song selectedItem1) {
+        bllFacade.deleteSongFromPlaylist(selectedItem, selectedItem1);
+    }
+
+    public void addSongToPlaylist(Playlist selectedItem, Song selectedItem1) {
+        bllFacade.addSongToPlaylist(selectedItem, selectedItem1);
     }
 }

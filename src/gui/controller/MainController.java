@@ -5,6 +5,7 @@ import be.Song;
 import dal.DAO.SongDAO;
 import gui.model.PlaylistModel;
 import gui.model.SongModel;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,10 @@ public class MainController implements Initializable {
 
     private final SongModel songModel;
     private final PlaylistModel playlisModel;
+    @FXML
+    public TableView<Song> songsInPlaylist;
+    @FXML
+    public TableColumn<Song, String> songName;
 
     private SongDAO songDAO = new SongDAO();
 
@@ -94,6 +99,9 @@ public class MainController implements Initializable {
 
         playlistName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         playlistView.setItems(playlisModel.getAllPlaylists());
+
+        songName.setCellValueFactory(new PropertyValueFactory<>("Title"));
+
     }
 
 
@@ -103,14 +111,14 @@ public class MainController implements Initializable {
         mediaPlayer = new MediaPlayer(
                 new Media(
                         new File(
-                                lstSongs.getItems().get(currentSong).getLocation()).toURI().toString()
+                                songsInPlaylist.getItems().get(currentSong).getLocation()).toURI().toString()
                 )
         );
         mediaPlayer.play();
-        paylingSongLabel.setText(lstSongs.getItems().get(currentSong).getTitle() + " is Playing");
+        paylingSongLabel.setText(songsInPlaylist.getItems().get(currentSong).getTitle() + " is Playing");
         mediaPlayer.setOnEndOfMedia(() -> {
-            if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
-                if (lstSongs.getItems().size() == currentSong + 1) {
+            if (songsInPlaylist.getSelectionModel().getSelectedIndex() != -1) {
+                if (songsInPlaylist.getItems().size() == currentSong + 1) {
                     currentSong = 0;
                 }
                 else {
@@ -125,7 +133,7 @@ public class MainController implements Initializable {
 
     public void playSong(javafx.event.ActionEvent actionEvent) {
         if (mediaPlayer == null) {
-            currentSong = lstSongs.getSelectionModel().getSelectedIndex();
+            currentSong = songsInPlaylist.getSelectionModel().getSelectedIndex();
             playButton.setText("Stop");
             play();
 
@@ -238,6 +246,26 @@ public class MainController implements Initializable {
             setUpPlaylists(true);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void displaySongs(MouseEvent mouseEvent) {
+        if (playlistView.getSelectionModel().getSelectedIndex() != -1) {
+            ObservableList<Song> allSongs = FXCollections.observableArrayList();
+            allSongs.addAll( playlistView.getSelectionModel().getSelectedItem().getSongsInPlaylist());
+            songsInPlaylist.setItems(allSongs);
+        }
+    }
+
+    public void deleteSongFromPlaylist(javafx.event.ActionEvent actionEvent) {
+        if (songsInPlaylist.getSelectionModel().getSelectedIndex() != -1) {
+            playlisModel.deleteSongFromPlaylist(playlistView.getSelectionModel().getSelectedItem(), songsInPlaylist.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    public void addSongOnPlaylist(javafx.event.ActionEvent actionEvent) {
+        if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
+            playlisModel.addSongToPlaylist(playlistView.getSelectionModel().getSelectedItem(), lstSongs.getSelectionModel().getSelectedItem());
         }
     }
 }
