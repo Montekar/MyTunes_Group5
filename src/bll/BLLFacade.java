@@ -58,4 +58,18 @@ public class BLLFacade implements IBLLFacade {
     }
 
 
+
+    @Override
+    public void deleteSongFromPlaylist(Playlist selectedItem, Song selectedItem1) {
+        dalFacade.deleteSongFromPlaylist(selectedItem, selectedItem1);
+
+    }
+
+    @Override
+    public void addSongToPlaylist(Playlist selectedItem, Song selectedItem1) {
+        dalFacade.addSongToPlaylist(selectedItem, selectedItem1);
+
+    }
+
+
 }

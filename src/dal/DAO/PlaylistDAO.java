@@ -12,8 +12,12 @@ import java.util.List;
 public class PlaylistDAO {
 
     private DbConnectionProvider connector;
+    private PlaylistSongDAO playlistSong;
 
-    public PlaylistDAO() throws IOException { connector = new DbConnectionProvider(); }
+    public PlaylistDAO() throws IOException {
+        connector = new DbConnectionProvider();
+        playlistSong = new PlaylistSongDAO();
+    }
 
     public List<Playlist> getAllPlaylists()
     {
@@ -27,7 +31,9 @@ public class PlaylistDAO {
                 int ID = rs.getInt("PlaylistID");
                 String Name = rs.getString("Name");
                 Playlist playlist = new Playlist(ID, Name);
+                playlist.setList(playlistSong.getPlaylistSongs(ID));
                 allPlaylists.add(playlist);
+                System.out.println(playlist.getSongsInPlaylist());
             }
             //System.out.println(allPlaylists);
             return allPlaylists; //Returns the full list

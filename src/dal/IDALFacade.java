@@ -22,4 +22,8 @@ public interface IDALFacade {
     List<Playlist> getAllPlaylist();
 
     Playlist deletePlaylist(Playlist playlistToDelete);
+
+    void deleteSongFromPlaylist(Playlist selectedItem, Song selectedItem1);
+
+    void addSongToPlaylist(Playlist selectedItem, Song selectedItem1);
 }
