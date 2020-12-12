@@ -1,12 +1,13 @@
 package gui.controller;
 
 import be.Playlist;
-import be.Song;
 import gui.model.PlaylistModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class PopupPlaylistController {
 
@@ -17,10 +18,18 @@ public class PopupPlaylistController {
     private boolean isEditing = false;
     private Playlist playlistToEdit;
 
+    public PopupPlaylistController() {
+        try {
+            playlistModel = PlaylistModel.getInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setInfo(Playlist selectedItem) {
         isEditing = true;
         playlistToEdit = selectedItem;
-        //playlistName.setText(selectedItem.getName());
+        playlistName.setText(selectedItem.getName());
     }
 
     public void setController(MainController mainController) {
@@ -42,6 +51,4 @@ public class PopupPlaylistController {
         }
     }
 
-    public void setInfo(Song selectedItem) {
-    }
 }

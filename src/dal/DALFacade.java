@@ -20,6 +20,8 @@ public class DALFacade implements IDALFacade{
     {
 
         songDAO = new SongDAO();
+        playlistDAO = new PlaylistDAO();
+
     }
 
     @Override
@@ -39,6 +41,7 @@ public class DALFacade implements IDALFacade{
 
     @Override
     public Song deleteSong(Song songToDelete) {
+
         return songDAO.deleteSong(songToDelete);
     }
 
@@ -50,6 +53,16 @@ public class DALFacade implements IDALFacade{
     @Override
     public Playlist editPlaylist(Playlist playlistToEdit, String name) {
         return playlistDAO.editPlaylist(playlistToEdit, name);
+    }
+
+    @Override
+    public List<Playlist> getAllPlaylist() {
+        return playlistDAO.getAllPlaylists();
+    }
+
+    @Override
+    public Playlist deletePlaylist(Playlist playlistToDelete) {
+        return playlistDAO.deletePlaylist(playlistToDelete);
     }
 
 }

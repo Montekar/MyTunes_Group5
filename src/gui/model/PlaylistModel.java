@@ -1,10 +1,31 @@
 package gui.model;
 
 import be.Playlist;
+import bll.BLLFacade;
 import bll.IBLLFacade;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.io.IOException;
 
 public class PlaylistModel {
+    private static PlaylistModel PlaylistSingleteon;
+
+    private ObservableList<Playlist> allPlaylists = FXCollections.observableArrayList();
+
     private IBLLFacade bllFacade;
+
+    public PlaylistModel() throws IOException {
+        bllFacade = new BLLFacade();
+    }
+
+    public static PlaylistModel getInstance() throws IOException {
+            if (PlaylistSingleteon == null)
+            {
+                PlaylistSingleteon = new PlaylistModel();
+            }
+            return PlaylistSingleteon;
+    }
 
     public Playlist createPlaylist(String name) {
         return bllFacade.createPlaylist(name);
@@ -12,5 +33,16 @@ public class PlaylistModel {
 
     public Playlist editPlaylist(Playlist playlistToEdit, String name) {
         return bllFacade.editPlaylist(playlistToEdit, name);
+    }
+
+    public ObservableList<Playlist> getAllPlaylists() {
+        allPlaylists = FXCollections.observableArrayList();
+        allPlaylists.addAll( bllFacade.getAllPlaylists());
+        return allPlaylists;
+    }
+
+    public Playlist deletePlaylist(Playlist playlistToDelete)
+    {
+        return bllFacade.deletePlaylist(playlistToDelete);
     }
 }

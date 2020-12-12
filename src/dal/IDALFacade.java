@@ -18,4 +18,8 @@ public interface IDALFacade {
     Playlist createPlaylist(String name);
 
     Playlist editPlaylist(Playlist playlistToEdit, String name);
+
+    List<Playlist> getAllPlaylist();
+
+    Playlist deletePlaylist(Playlist playlistToDelete);
 }

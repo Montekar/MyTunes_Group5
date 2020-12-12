@@ -18,4 +18,8 @@ public interface IBLLFacade {
     Playlist createPlaylist(String name);
 
     Playlist editPlaylist(Playlist playlistToEdit, String name);
+
+    List<Playlist> getAllPlaylists();
+
+    Playlist deletePlaylist(Playlist playlistToDelete);
 }
