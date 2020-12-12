@@ -18,14 +18,13 @@
       <Label layoutX="45.0" layoutY="150.0" text="Category:" />
       <Label layoutX="66.0" layoutY="190.0" text="Time:" />
       <Label layoutX="73.0" layoutY="230.0" text="File:" />
-      <TextField layoutX="110.0" layoutY="66.0" prefHeight="26.0" prefWidth="344.0" />
-      <TextField layoutX="110.0" layoutY="106.0" prefHeight="26.0" prefWidth="344.0" />
-      <ChoiceBox layoutX="109.0" layoutY="146.0" prefWidth="150.0" />
-      <Button layoutX="274.0" layoutY="146.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="489.0" layoutY="328.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Save" />
-      <Button layoutX="409.0" layoutY="328.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Cancel" />
-      <Button layoutX="489.0" layoutY="226.0" mnemonicParsing="false" text="Choose..." />
-      <Label alignment="CENTER_RIGHT" layoutX="110.0" layoutY="192.0" prefHeight="18.0" prefWidth="150.0" text="0:00" />
-      <Label alignment="BOTTOM_LEFT" layoutX="109.0" layoutY="230.0" prefHeight="18.0" prefWidth="344.0" text="locate song in your computer*" />
+      <TextField fx:id="chooseTitle" layoutX="110.0" layoutY="66.0" prefHeight="26.0" prefWidth="344.0" />
+      <TextField fx:id="chooseArtist" layoutX="110.0" layoutY="106.0" prefHeight="26.0" prefWidth="344.0" />
+      <ChoiceBox fx:id="chooseCategory" layoutX="109.0" layoutY="146.0" prefWidth="150.0" />
+      <Button layoutX="489.0" layoutY="328.0" mnemonicParsing="false" onAction="#saveNew" prefHeight="26.0" prefWidth="64.0" text="Save" />
+      <Button layoutX="409.0" layoutY="328.0" mnemonicParsing="false" onAction="#closeNew" prefHeight="26.0" prefWidth="64.0" text="Cancel" />
+      <Button layoutX="489.0" layoutY="226.0" mnemonicParsing="false" onAction="#chooseSong" text="Choose..." />
+      <Label fx:id="chooseTime" alignment="CENTER_RIGHT" layoutX="110.0" layoutY="192.0" prefHeight="18.0" prefWidth="150.0" text="0:00" />
+      <Label fx:id="chooseFile" alignment="BOTTOM_LEFT" layoutX="109.0" layoutY="230.0" prefHeight="18.0" prefWidth="344.0" text="locate song in your computer*" />
    </children>
 </AnchorPane>

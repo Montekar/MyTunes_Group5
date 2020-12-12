@@ -8,19 +8,19 @@ public class Song {
     private final int playtime; // Song playtime in seconds
     //private final String playtimeString; // Song playtime in minute:second format
     private String location; // Song URL on the system
-    //private final int ID; // Unique song ID in the database
+    private final int ID; // Unique song ID in the database
     //private int locationInList; // Song ID thats hidden from the user. Its used mainly for moving the song up and down the list in database.
    // private int IDinsideList = 0; // Song ID thats visable to the user once displayed in the Playlist songs table
 
 
-    public Song(String title, String artist, String category, int playtime, String link) {
+    public Song(int ID, String title, String artist, String category, int playtime, String link) {
         this.title = title;
         this.artist = artist;
         this.category = category;
         this.playtime = playtime;
         //this.playtimeString = playtimeString;
         this.location = link;
-        //this.ID = ID;
+        this.ID = ID;
         //this.locationInList = locationInList;
         //this.IDinsideList = IDinsideList;
     }
@@ -62,12 +62,12 @@ public class Song {
         this.location = location;
     }
 
-    /*
+
     public int getID() {
         return ID;
     }
 
-
+   /*
     public int getLocationInList() {
         return locationInList;
     }

@@ -1,5 +1,6 @@
 package bll;
 
+import be.Playlist;
 import be.Song;
 import dal.DALFacade;
 import dal.IDALFacade;
@@ -19,5 +20,31 @@ public class BLLFacade implements IBLLFacade {
     public List<Song> getAllSongs() {
         return dalFacade.getAllSongs();
     }
+
+    @Override
+    public Song createSong(String name, String text, String selectedItem, int i, String text1) {
+        return dalFacade.createSong(name, text, selectedItem, i, text1);
+    }
+
+    @Override
+    public Song updateSong(Song songToEdit, String name, String text, String selectedItem, int i, String text1) {
+        return dalFacade.updateSong(songToEdit, name, text, selectedItem, i, text1);
+    }
+
+    @Override
+    public Song deleteSong(Song songToDelete) {
+        return dalFacade.deleteSong(songToDelete);
+    }
+
+    @Override
+    public Playlist createPlaylist(String name) {
+        return dalFacade.createPlaylist(name);
+    }
+
+    @Override
+    public Playlist editPlaylist(Playlist playlistToEdit, String name) {
+        return dalFacade.editPlaylist(playlistToEdit, name);
+    }
+
 
 }
