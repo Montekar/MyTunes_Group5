@@ -107,6 +107,8 @@ public class PopupSongController {
                 songModel.updateSong(songToEdit, name, chooseArtist.getText(), chooseCategory.getSelectionModel().getSelectedItem(), i, chooseFile.getText());
             }
         }
+        Stage stage = (Stage) chooseTitle.getScene().getWindow();
+        stage.close();
     }
 
     public void closeNew(ActionEvent actionEvent) {

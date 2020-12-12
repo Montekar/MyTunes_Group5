@@ -49,6 +49,8 @@ public class PopupPlaylistController {
                 playlistModel.editPlaylist(playlistToEdit, name);
             }
         }
+        Stage stage = (Stage) playlistName.getScene().getWindow();
+        stage.close();
     }
 
 }
