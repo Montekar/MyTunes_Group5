@@ -39,21 +39,21 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView prefHeight="386.0" prefWidth="227.0">
+                  <TableView fx:id="playlistView" prefHeight="386.0" prefWidth="227.0">
                     <columns>
-                      <TableColumn prefWidth="102.39999771118164" text="Name" />
-                      <TableColumn prefWidth="48.000030517578125" text="Songs" />
-                        <TableColumn prefWidth="75.0" text="Time" />
+                      <TableColumn fx:id="playlistName" prefWidth="102.39999771118164" text="Name" />
+                      <TableColumn fx:id="playlistNumber" prefWidth="48.000030517578125" text="Songs" />
+                        <TableColumn fx:id="playlistTime" prefWidth="75.0" text="Time" />
                     </columns>
                   </TableView>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="227.0" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#newPlaylist" text="New Playlist" />
-                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="Edit Playlist">
+                        <Button mnemonicParsing="false" onAction="#editPlaylist" text="Edit Playlist">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></Button>
-                        <Button mnemonicParsing="false" text="Delete" />
+                        <Button mnemonicParsing="false" onAction="#deletePlaylist" text="Delete" />
                      </children>
                   </HBox>
                </children>

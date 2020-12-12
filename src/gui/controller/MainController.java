@@ -1,7 +1,9 @@
 package gui.controller;
 
+import be.Playlist;
 import be.Song;
 import dal.DAO.SongDAO;
+import gui.model.PlaylistModel;
 import gui.model.SongModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +27,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     private final SongModel songModel;
+    private final PlaylistModel playlisModel;
 
     private SongDAO songDAO = new SongDAO();
 
@@ -50,6 +53,16 @@ public class MainController implements Initializable {
     @FXML
     private Slider volume;
 
+    @FXML
+    private TableView<Playlist> playlistView;
+    @FXML
+    private TableColumn<Playlist, String> playlistName;
+    @FXML
+    private TableColumn<Playlist, String>  playlistNumber;
+    @FXML
+    private TableColumn<Playlist, Integer>  playlistTime;
+
+
     private MediaPlayer mediaPlayer;
 
 
@@ -59,7 +72,7 @@ public class MainController implements Initializable {
         songModel = SongModel.getInstance(); //singleton
         System.out.println(songModel.getAllSongs());
 
-
+        playlisModel = PlaylistModel.getInstance();
     }
 
     public void clickLoad(ActionEvent actionEvent)
@@ -78,6 +91,9 @@ public class MainController implements Initializable {
         Category.setCellValueFactory(new PropertyValueFactory<>("Category"));
         Time.setCellValueFactory(new PropertyValueFactory<>("playtimeString"));
         lstSongs.setItems(songModel.getAllSongs());
+
+        playlistName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        playlistView.setItems(playlisModel.getAllPlaylists());
     }
 
 
@@ -201,7 +217,7 @@ public class MainController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/view/popupPlaylist.fxml"));
         root2 = (Parent) fxmlLoader.load();
         if (isEditing) {
-            fxmlLoader.<PopupPlaylistController>getController().setInfo(lstSongs.getSelectionModel().getSelectedItem());
+            fxmlLoader.<PopupPlaylistController>getController().setInfo(playlistView.getSelectionModel().getSelectedItem());
         }
         fxmlLoader.<PopupPlaylistController>getController().setController(this);
 
@@ -209,5 +225,19 @@ public class MainController implements Initializable {
         stage.setScene(new Scene(root2));
         stage.centerOnScreen();
         stage.show();
+    }
+
+    public void deletePlaylist(javafx.event.ActionEvent actionEvent) {
+        if (playlistView.getSelectionModel().getSelectedIndex() != -1) {
+            playlisModel.deletePlaylist(playlistView.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    public void editPlaylist(javafx.event.ActionEvent actionEvent) {
+        try {
+            setUpPlaylists(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

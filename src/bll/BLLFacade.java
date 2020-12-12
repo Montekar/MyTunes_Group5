@@ -33,6 +33,7 @@ public class BLLFacade implements IBLLFacade {
 
     @Override
     public Song deleteSong(Song songToDelete) {
+
         return dalFacade.deleteSong(songToDelete);
     }
 
@@ -44,6 +45,16 @@ public class BLLFacade implements IBLLFacade {
     @Override
     public Playlist editPlaylist(Playlist playlistToEdit, String name) {
         return dalFacade.editPlaylist(playlistToEdit, name);
+    }
+
+    @Override
+    public List<Playlist> getAllPlaylists() {
+        return dalFacade.getAllPlaylist();
+    }
+
+    @Override
+    public Playlist deletePlaylist(Playlist playlistToDelete) {
+        return dalFacade.deletePlaylist(playlistToDelete);
     }
 
 
