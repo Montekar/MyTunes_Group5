@@ -34,11 +34,19 @@
          <children>
             <VBox prefHeight="399.0" prefWidth="227.0">
                <children>
-                  <Label text="Playlists">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  <HBox prefHeight="15.0" prefWidth="227.0">
+                     <children>
+                        <Label text="Playlists">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#refreshPlaylist" text="Refresh" />
+                     </children>
+                  </HBox>
                   <TableView fx:id="playlistView" onMouseClicked="#displaySongs" prefHeight="386.0" prefWidth="227.0">
                     <columns>
                       <TableColumn fx:id="playlistName" prefWidth="102.39999771118164" text="Name" />
@@ -90,11 +98,19 @@
          <children>
             <VBox prefHeight="466.0" prefWidth="382.0">
                <children>
-                  <Label fx:id="songLabel" text="Songs">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  <HBox prefHeight="29.0" prefWidth="382.0">
+                     <children>
+                        <Label fx:id="songLabel" text="Songs">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#refreshSong" text="Refresh" />
+                     </children>
+                  </HBox>
                   <TableView fx:id="lstSongs" prefHeight="423.0" prefWidth="354.0">
                      <columns>
                         <TableColumn fx:id="Title" prefWidth="113.59991455078125" text="Title" />

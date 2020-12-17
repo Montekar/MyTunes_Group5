@@ -1,3 +1,7 @@
+/*
+    This is the main controller for the main fxml window, it holds all the functional code for for the GUI layer.
+ */
+
 package gui.controller;
 
 import be.Playlist;
@@ -87,10 +91,23 @@ public class MainController implements Initializable {
         //lstSongs.getItems().addAll(songs);
     }
 
+    public void refreshPlaylist(javafx.event.ActionEvent actionEvent) throws IOException {
+        UpdataPlaylist();
+    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        //observableListPlay = playlistModel.getPlaylists();
+    public void refreshSong(javafx.event.ActionEvent actionEvent) throws IOException {
+        UpdataSong();
+    }
+
+    public void UpdataPlaylist(){
+        playlistView.setItems(playlisModel.getAllPlaylists());
+    }
+
+    public void UpdataSong(){
+        lstSongs.setItems(songModel.getAllSongs());
+    }
+
+    public void UpdataTable(){
         Title.setCellValueFactory(new PropertyValueFactory<>("Title"));
         Artist.setCellValueFactory(new PropertyValueFactory<>("Artist"));
         Category.setCellValueFactory(new PropertyValueFactory<>("Category"));
@@ -101,7 +118,12 @@ public class MainController implements Initializable {
         playlistView.setItems(playlisModel.getAllPlaylists());
 
         songName.setCellValueFactory(new PropertyValueFactory<>("Title"));
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //observableListPlay = playlistModel.getPlaylists();
+        UpdataTable();
     }
 
 
@@ -195,6 +217,7 @@ public class MainController implements Initializable {
         if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
             songModel.deleteSong(lstSongs.getSelectionModel().getSelectedItem());
         }
+        UpdataSong();
     }
 
 
@@ -239,6 +262,7 @@ public class MainController implements Initializable {
         if (playlistView.getSelectionModel().getSelectedIndex() != -1) {
             playlisModel.deletePlaylist(playlistView.getSelectionModel().getSelectedItem());
         }
+        UpdataPlaylist();
     }
 
     public void editPlaylist(javafx.event.ActionEvent actionEvent) {
@@ -261,11 +285,13 @@ public class MainController implements Initializable {
         if (songsInPlaylist.getSelectionModel().getSelectedIndex() != -1) {
             playlisModel.deleteSongFromPlaylist(playlistView.getSelectionModel().getSelectedItem(), songsInPlaylist.getSelectionModel().getSelectedItem());
         }
+        UpdataPlaylist();
     }
 
     public void addSongOnPlaylist(javafx.event.ActionEvent actionEvent) {
         if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
             playlisModel.addSongToPlaylist(playlistView.getSelectionModel().getSelectedItem(), lstSongs.getSelectionModel().getSelectedItem());
         }
+        UpdataTable();
     }
 }
