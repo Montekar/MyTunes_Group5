@@ -1,3 +1,8 @@
+/*
+    This is the Data access object that's being used to manage the data of the songs.
+    it's use is to process the core functions of the data that a song need to process.
+ */
+
 package dal.DAO;
 
 import be.Song;

@@ -1,3 +1,8 @@
+/*
+    This is the Data access object that's being used to manage the data of the database connection.
+    it's use is to process the core functions of connections that's needed for the program.
+ */
+
 package dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;

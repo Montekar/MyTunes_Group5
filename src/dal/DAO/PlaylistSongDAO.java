@@ -1,3 +1,9 @@
+/*
+    This is the Data access object that's being used to manage the data of the songs on the playlist.
+    it's use is to process the core functions of the data that used to:
+        store, edit and add new songs to the playlist as an entity
+ */
+
 package dal.DAO;
 
 import be.Playlist;

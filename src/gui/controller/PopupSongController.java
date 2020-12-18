@@ -1,3 +1,7 @@
+/*
+    This is the controller for the PopupSongController fxml window, it holds all the functional code for it's GUI layer.
+ */
+
 package gui.controller;
 
 import be.Song;

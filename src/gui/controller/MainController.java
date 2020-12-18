@@ -1,5 +1,5 @@
 /*
-    This is the main controller for the main fxml window, it holds all the functional code for for the GUI layer.
+    This is the main controller for the main fxml window, it holds all the functional code for it's GUI layer.
  */
 
 package gui.controller;

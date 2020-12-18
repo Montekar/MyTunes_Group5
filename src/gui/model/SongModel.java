@@ -1,3 +1,7 @@
+/*
+    This class is being used to display the songs in the tableview.
+ */
+
 package gui.model;
 
 import be.Song;
